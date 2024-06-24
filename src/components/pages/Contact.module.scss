@@ -1,0 +1,101 @@
+@use '../mixins';
+
+
+.main {
+    @include mixins.flex(column, center);
+    width: 100%;
+    min-height: 80vh;
+    margin: 30px 0;
+
+    h1 {
+        text-align: center;
+        margin: 50px 0;
+        font-size: 2rem;
+        font-style: italic;
+    }
+
+    .formWrapper {
+        @include mixins.flex(row, center);
+        width: 100%;
+        gap: 50px;
+        position: relative;
+        .left {
+            @include mixins.flex(column, left, start);
+            gap: 80px;
+            width: 30%;
+
+            .leftItem {
+                p {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+        img {
+            width: 150px;
+        }
+        form {
+            @include mixins.flex(column, center, start);
+            width: 50%;
+            min-height: 400px;
+            background-color: var(--color-white);
+            padding: 20px;
+            border-radius: 10px;
+            gap: 10px;
+            p {
+                font-size: 1.5rem;
+            }
+
+            .group {
+                @include mixins.flex(row, center);
+                gap: 20px;
+                width: 100%;
+            }
+
+            input[type=text], input[type=email] {
+                color: var(--color-blue);
+                margin-bottom: 20px;
+                width: calc(100% - 20px);
+                height: 50px;
+                border: none;
+                border-radius: 10px;
+                padding: 5px 10px;
+                background-color: rgb(201, 201, 201);
+            }
+
+            .contactMsg {
+                height: 100px !important;
+            }
+
+            input[type=submit] {
+                height: 50px;
+                width: 100px;
+                border-radius: 10px;
+                padding: 5px 10px;
+                border: none;
+                font-weight: 700;
+                color: var(--color-white);
+                background-color: var(--color-red);
+                margin: 0 auto;
+            }
+            input[type=submit]:hover {
+                cursor: pointer;
+                background-color: var(--color-blue);
+            }
+        }
+    }
+    
+    @include mixins.mobile() {
+        .formWrapper {
+            @include mixins.flex(column, center);
+            gap: 20px;
+            .left {
+                @include mixins.flex(column, center);
+                text-align: center;
+                width: 100%;
+            }
+            form {
+                width: 100%;
+            }
+        }
+    }
+}

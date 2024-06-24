@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Club Curious</title>
+</head>
+
+<body class="bg-gradient">
+  <div class="bg-texture"></div>
+  <!-- Alt indhold på hjemmesiden kommer til at være i dette div og opdatere dynamisk -->
+  <div id="billetto">
+    <script src="https://billetto.dk/widget.js"></script>
+    <billetto-organiser-widget type="calendar" organiser="3864131" organization="billetto.dk" lang="da" theme="light" color="#fd8c24"></billetto-organiser-widget>
+  </div>
+  <div id="root"></div>
+  <!-- Dette script er hjemmesidens kerne og sammenfletter alle refererede filer sammen -->
+  <!-- Typen skal være 'module' da der bliver importeret moduler fx: import React from 'react' -->
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

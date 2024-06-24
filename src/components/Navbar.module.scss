@@ -1,0 +1,320 @@
+@use './mixins';
+
+.main {
+    @include mixins.flex(row);
+
+    width: calc(100% - 40px);
+    height: fit-content;
+    margin: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    background-color: var(--color-white);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    border-radius: 0 0 10px 10px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    animation: showNavbarAni ease 0.5s;
+
+    @keyframes showNavbarAni {
+        0% {
+            transform: translateY(-100px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+    .menuWrapper {
+        @include mixins.flex(row, space-between);
+
+        width: 100%;
+        margin: 0 20px;
+        position: relative;
+        .logo {
+            @include mixins.flex(row);
+
+            margin-right: 10px;
+            position: relative;
+            border-radius: 0 0 0 10px;
+            transform: translateX(-20px);
+            overflow: hidden;
+            a {
+                @include mixins.flex(row);
+            }
+
+            img {
+                width: 100px;
+                animation: logoAni ease 0.7s;
+                transition: 0.2s;
+            }
+
+            img:hover {
+                filter: invert(1);
+                transition: 0.2s;
+            }
+
+            @keyframes logoAni {
+                0% {
+                    opacity: 0;
+                    transform: translateX(-150px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateX(0px);
+                }
+            }
+        }
+        
+        .menu {
+            @include mixins.flex(row, right);
+    
+            margin-left: 10px;
+            li {
+                @include mixins.flex(row);
+                position: relative;
+                padding: 10px 10px;
+            }
+        
+            .dropdown {
+                @include mixins.flex(column);
+    
+                a {
+                    @include mixins.flex(row);
+                    gap: 5px;
+                }
+    
+                .iconWrapper {
+                    padding-top: 4px;
+                    svg {
+                        transform: rotateZ(-90deg) scale(0.7);
+                        transition: 0.2s ease;
+                    }
+                }
+            
+                .subMenuWrapper {
+                    @include mixins.flex(column);
+                
+                    display: none;
+                    margin-top: -15px;
+                    .subMenu {
+                        @include mixins.flex(column);
+                        margin: 0 10px;
+                
+                        li {
+                            @include mixins.flex(row);
+    
+                            width: 100%;
+                            a {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        
+            .dropdown:hover {
+                .iconWrapper {
+                    svg {
+                        @extend .svgArrowActive;
+                    }
+                }
+    
+                .subMenuWrapper, .subMenuWrapper:hover {
+                    @extend .subMenuWrapperActive;
+                }
+            }
+        }
+    }
+}
+
+.active {
+    color: var(--color-red);
+}
+
+.divider {
+    height: 20px;
+    margin: 0 10px;
+    border-right: 1px solid var(--color-green);
+    opacity: 0.5;
+}
+
+.navDesktop {
+    @extend .main;
+    @include mixins.flex(row);
+    
+    min-width: 755px;
+    .dropdown {
+        .subMenuWrapper {
+            min-width: 120px;
+            background-color: var(--color-white);
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 0 0 10px 10px;
+            position: absolute;
+            margin-top: -15px !important;
+            top: 50px;
+        
+            .subMenu {
+                li {
+                    padding: 10px 10px;
+                }
+            }
+        }
+    }
+}
+
+.navMobile {
+    @extend .main;
+    @include mixins.flex(row);
+
+    min-width: initial;
+    width: calc(100% + 80px);
+    border-radius: 0;
+    transform: initial;
+    animation: showNavbarAniMobile ease 0.5s;
+
+    @keyframes showNavbarAniMobile {
+        0% {
+            transform: translateY(-100px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+    .menuWrapper {
+        .menu {
+            @include mixins.flex(column);
+            @include mixins.absolutePos(top);
+
+            width: 100%;
+            margin: 80px 0 0 0;
+            background-color: var(--color-white);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+            font-size: 1.5rem;
+            transform: translateX(100%);
+            transition: transform 0.5s ease;
+            .dropdown {
+                padding: 0;
+                min-height: 70px;
+                .subMenuWrapper {
+                    width: 100%;
+                    font-size: 0.8em;
+                    background-color: var(--color-main3);
+
+                    .subMenu {
+                        width: 100%;
+                        position: relative;
+                    }
+                }
+            }
+
+            li {
+                width: 100%;
+                min-height: 50px;
+                border-bottom: 1px solid black;
+
+                li {
+                    padding: 0;
+                    height: 50px;
+                    border-bottom: none;
+                }
+            }
+
+            li:last-child {
+                border-bottom: none;
+            }
+
+            li:hover {
+                background-color: var(--color-main3);
+
+                li {
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+
+    .burgerIcon {
+        @include mixins.flex(column);
+        @include mixins.absolutePos(centerRight);
+
+        gap: 10px;
+        padding: 10px 0 10px 15px;
+        width: 80px;
+        height: 55px;
+        div {
+            width: 50px;
+            height: 5px;
+            background-color: var(--color-main1);
+            transform: translate(0, 0) rotate(0);
+            transition: transform 0.3s ease;
+        }
+    }
+
+    .burgerIcon:hover {
+        cursor: pointer;
+        div {
+            background-color: var(--color-blue);
+        }
+    }
+}
+
+.showNavMobile {
+    transform: translateX(-50%) !important;
+    transition: transform 0.5s ease;
+}
+
+.svgArrowActive {
+    transform: rotateZ(0) scale(0.7) !important;
+    transition: 0.2s ease !important;
+}
+
+.subMenuWrapperActive {
+    display: flex;
+}
+
+.show {
+    display: flex !important;
+}
+
+.language {
+    @include mixins.flex(row);
+
+    gap: 3px;
+    margin-left: 10px;
+    padding: 5px 7px !important;
+    background-color: var(--color-red);
+    border-radius: 10px;
+    font-size: 0.6em;
+    color: var(--color-white);
+
+    span {
+        @include mixins.flex(row);
+
+        cursor: default;
+        width: 100%;
+        padding-top: 1px;
+    }
+
+    svg {
+        font-size: 1.5em;
+    }
+}
+
+.language:hover {
+    cursor: pointer;
+    background-color: var(--color-blue);
+
+    span {
+        cursor: pointer;
+    }
+}
+
+.languageMobile {
+    @extend .language;
+    @include mixins.absolutePos(center);
+    padding: 7px 10px !important;
+}

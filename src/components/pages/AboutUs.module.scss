@@ -1,0 +1,83 @@
+@use '../mixins';
+
+
+.main {
+    @include mixins.flex(column, center);
+    width: 100%;
+    min-height: 80vh;
+
+    .hours {
+        @include mixins.flex(column, center);
+        width: calc(100% - 100px);
+        border-radius: 10px;
+        background-color: var(--color-white);
+        padding: 20px;
+        margin: 20px 0;
+        
+        h1 {
+            font-size: 50px;
+            color: var(--color-main1);
+            margin-bottom: 20px;
+        }
+
+        .item {
+            @include mixins.flex(row, center);
+            width: 30%;
+            gap: 50px;
+
+            p {
+                font-size: 20px;
+                color: var(--color-red);
+            }
+    
+            @include mixins.mobile() {
+                @include mixins.flex(column, center);
+                width: 100%;
+                gap: 5px;
+            }
+        }
+    
+        @include mixins.mobile() {
+            width: calc(100% - 40px);
+            gap: 30px;
+        
+            h1 {
+                font-size: 40px;
+            }
+        }
+    }
+
+    .gallery {
+        width: 100%;
+        @include mixins.flex(row, center);
+        flex-wrap: wrap;
+        gap: 20px;
+
+        .item {
+            width: calc(50% - 40px);
+            height: 200px;
+            border-radius: 10px;
+            background-position: center center;
+            background-size: cover;
+    
+            @include mixins.mobile() {
+                @include mixins.flex(column, space-between);
+                width: 100%;
+            }
+        }
+    }
+
+    .address {
+        @extend .hours;
+
+        p {
+            font-size: 20px;
+            color: var(--color-red);
+        }
+
+        .maps {
+            margin-top: 20px;
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,80 @@
+@use '../mixins';
+
+
+.main {
+    @include mixins.flex(column, center);
+    width: 100%;
+    min-height: 80vh;
+    margin: 80px 0;
+    gap: 100px;
+
+    .collab {
+        width: 100%;
+        @include mixins.flex(column, center);
+        gap: 100px;
+
+        article {
+            @include mixins.flex(row, space-between);
+            width: 100%;
+            gap: 50px;
+
+            .text {
+                h1 {
+                    font-size: 60px;
+                    color: var(--color-main1);
+                }
+
+                p {
+                    font-size: 20px;
+                    color: var(--color-red);
+                }
+            }
+            
+            .image {
+                width: 50%;
+                height: 200px;
+                background-position: center center;
+                background-size: cover;
+                border-radius: 10px;
+            }
+        }
+        
+        .articleReverse {
+            @include mixins.flex(row-reverse, space-between);
+        }
+    }
+
+    .sponsor {
+        text-align: center;
+        width: 100%;
+        border-radius: 10px;
+        background-color: var(--color-white);
+        padding: 20px;
+
+        h1 {
+            font-size: 50px;
+            color: var(--color-blue);
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 20px;
+            color: var(--color-blue);
+        }
+    }
+    
+    @include mixins.mobile() {
+        .collab {
+            article {
+                @include mixins.flex(column, center);
+                .image {
+                    width: 100%;
+                }
+            }
+        
+            .articleReverse {
+                @include mixins.flex(column, space-between);
+            }
+        }
+    }
+}

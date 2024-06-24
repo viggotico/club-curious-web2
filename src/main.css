@@ -1,0 +1,100 @@
+:root {
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  text-decoration: none;
+
+  --color-main1: #BD1A1A;
+  --color-main2: #F8CB6B;
+  --color-main3: #FFF3C4;
+
+  --color-green: #7F6F22;
+  --color-lightgreen: #E9F4F4;
+  --color-pink: #FFE0E0;
+  --color-blue: #004AAD;
+  --color-lightblue: #C4DAFF;
+  --color-white: #FFFFEE;
+  --color-red: #DD6C4F;
+  
+  --bg-gradient: linear-gradient(160deg, #afafaf 0%, #dbccba 42%, #bababa 100%);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+  max-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+  color: var(--color-blue);
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  max-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+#billetto {
+  display: none;
+}
+
+a {
+  color: var(--color-green);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-blue);
+}
+
+button {
+  height: 50px;
+  width: 100px;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 20px;
+  border: none;
+  font-weight: 700;
+  color: var(--color-white);
+  background-color: var(--color-red);
+  margin: 0 auto;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: var(--color-blue);
+}
+
+.bg-gradient {
+  /* https://cssgradient.io/ */
+  background-image: var(--bg-gradient);
+}
+
+.bg-texture {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  position: absolute;
+  mix-blend-mode: screen;
+}
+
+.bg-texture-2 {
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+  position: absolute;
+}
