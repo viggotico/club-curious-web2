@@ -19,13 +19,14 @@
             gap: 50px;
 
             .text {
+                max-width: 50%;
                 h1 {
                     font-size: 60px;
                     color: var(--color-main1);
                 }
 
                 p {
-                    font-size: 20px;
+                    font-size: 35px;
                     color: var(--color-red);
                 }
             }

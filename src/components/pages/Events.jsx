@@ -14,9 +14,11 @@ const Events = ({ }) => {
     return (
         <>
             <div className={style.main} id="events-wrapper">
+                <p className={style.emoji}>🤠</p>
                 <header>
-                    <h1>Oversigt over vores events</h1>
+                    <h1>Oversigt over vores aktiviteter</h1>
                     <p>Til disse events kan du b.la. møde nye mennesker, opleve noget nyt, eller dele din kreativitet!</p>
+                    <p>De fleste aktiviteter foregår i Aarhus, både indendørs og udendørs.</p>
                     <p>Hvis I kunne tænkte jer at holde jeres næste arrangement her, kan I kontakte os <a href="../contact">her</a>.</p>
                 </header>
             </div>
